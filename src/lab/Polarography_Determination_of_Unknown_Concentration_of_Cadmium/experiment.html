@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+<link rel='stylesheet' href='../template/assets/css/fonts.googleapis.css'>
+<link rel="stylesheet" href="../template/bower_components/angular-material/angular-material.css" />
+<link rel="stylesheet" href="../template/assets/css/app.css" />
+<link rel="stylesheet" href="css/experiment.css" />
+<script src="../template/js/createjs-2015.05.21.min.js"></script>
+<script src="../template/js/canvasjs.min.js"></script>
+<script src="../template/bower_components/angular/angular.min.js"></script>
+<script src="../template/bower_components/angular-animate/angular-animate.js"></script>
+<script src="../template/bower_components/angular-aria/angular-aria.js"></script>
+<script src="../template/bower_components/angular-fullscreen/angular-fullscreen.js"></script>
+<script src="../template/js/Gettext.js"></script>
+
+<link rel="stylesheet" href="../template/assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../template/assets/css/dialogs.css">
+<script src="../template/bower_components/ui-bootstrap-tpls/ui-bootstrap-tpls-0.11.2.min.js"></script>
+<script src="../template/bower_components/dialogs/dialogs.min.js"></script>
+<script src="../template/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="../template/bower_components/angular-translate/angular-translate.min.js"></script>
+
+<script type="text/javascript" src="../template/bower_components/angular-material/angular-material.js"></script>
+<script src="../template/js/getlanguage.js"></script>
+<script src="./src/user_controller.js"></script>
+<script src="src/view.js"></script>
+<script src="./src/experiment.js"></script>
+<script type="text/javascript">
+    angular
+    .module('starterApp', ['ngMaterial','users'])
+    .config(function($mdThemingProvider, $mdIconProvider){
+        $mdIconProvider
+            .icon("menu"       , "../template/assets/svg/menu.svg"        , 24)
+            .icon("fullscreen"       , "../template/assets/icons/Icon3.svg", 24)
+            .icon("help"      , "../template/assets/icons/Icon2.svg", 24);
+            $mdThemingProvider.theme('default')
+            .primaryPalette('blue')
+            .accentPalette('red');
+        });
+</script>
+</head>
+
+<body style="background-color: #f2f2f2;" ng-app="starterApp" ng-controller="UserController as ul">
+<md-toolbar class="md-toolbar-tools" id="main">
+    <md-button class="md-icon-button" hide-gt-md ng-click="ul.toggleList()" aria-label="Show User List">
+        <md-icon md-svg-icon="menu" ></md-icon>
+    </md-button>
+    <!-- //Experiment title gives here//   -->
+    <h1 flex="" layout="row" class="expTitle" id="expTitle">{{heading}}</h1>
+    <md-button class="md-icon-button" aria-label="help" ng-click="showActionToast()">
+        <md-icon md-svg-icon="help"></md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="fullscreen" ng-click="goFullscreen()">
+        <md-icon md-svg-icon="fullscreen"></md-icon>
+    </md-button>
+</md-toolbar>
+<md-content flex layout="row" style="background-color: #f2f2f2;">
+    <md-content  id="content" layout="column"  style="background-color: #f2f2f2;" md-swipe-right="toggleSidenav()">        
+    <section layout="row" layout-align="center center">
+        <md-button ng-show="hide_show_zoom" class="md-raised" id="showNormal" ng-click="zoomCompassBtn();" >{{show_zoom}}</md-button>
+    </section>
+    <canvas id="demoCanvas" width="700" height="700" align="center" layout-fill experiment></canvas>
+    <md-content  id="graphDiv"></md-content>
+    <!-- Graph div -->
+    <div id="Copyright">{{copyright}}</div>       
+    </md-content>
+    <md-sidenav class="site-sidenav md-sidenav-left" md-component-id="right" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="toggleSidenav()">
+    <div>  
+    <md-button id="variables" class="md-raised md-primary toolbarbutton subTitle" ng-click="toggle1()">{{variables}} <span aria-hidden="true">
+    <md-icon md-svg-src="md-toggle-arrow"  aria-hidden="true" ng-animate="{enter: 'rotate', leave: 'rotateCounterwise'}" ng-class="{true: 'rotate', false: 'rotateCounterwise'}[isActive1]" ></md-icon>
+    </span> </md-button>
+      
+    <!-- ////////////   -->
+    <div ng-hide="showVariables" class="div">
+        <!-- Insert dropdown label -->
+        <md-content id="selectConcentration" class="md-title selectable" layout-padding>{{choose_concentration}}</md-content>
+        <!-- Insert dropdown box -->
+        <md-select ng-disabled="concentration_disable" placeholder="1" ng-model="Concentration" ng-focus="inputValidationOnKeyUp();" ng-change="changeConcentration();">
+            <md-option class="md-title selectable" ng-repeat="x in concentration_array" value="{{ x.type }}">{{ x.concentration }}</md-option>
+        </md-select>
+
+        <!-- Load Cadmium Sample button -->
+        <section layout="row" layout-align="center center">
+            <md-button class="md-raised" ng-disabled="load_cadmium_disable" ng-focus="inputValidationOnKeyUp();" ng-model="load_cadmium" id="load_cadmium" ng-click="loadCadmium();">{{load_cadmium_txt}}</md-button>
+        </section>
+
+        <!-- Insert Initial mV label -->
+        <md-content id="initial_mV" class="md-title selectable" layout-padding>{{initial_mV}}</md-content>
+        <section layout="row" layout-align="center center">
+            <input required type="number" ng-model="mVinitial" ng-disabled="control_disable" ng-focus="inputValidationOnKeyUp();">
+        </section>
+
+        <!-- Insert Final mV label -->
+        <md-content id="final_mV" class="md-title selectable" layout-padding>{{final_mV}}</md-content>
+        <section layout="row" layout-align="center center">
+            <input required type="number" ng-model="mVfinal" ng-disabled="control_disable" ng-focus="inputValidationOnKeyUp();">
+        </section>
+
+        <!-- Insert dropdown label -->
+        <md-content id="selectScan" class="md-title selectable" layout-padding>{{scan_analysis_txt}}</md-content>
+        <!-- Insert dropdown box -->
+        <md-select ng-disabled="control_disable" placeholder="{{e_id}}" ng-model="scan_analysis" ng-focus="inputValidationOnKeyUp();" ng-change="changeScanAnalysis();">
+            <md-option class="md-title selectable" ng-repeat="x in analysis_array" value="{{ x.type }}">{{ x.analysis }}</md-option>
+        </md-select>
+
+        <!-- Plot graph -->
+        <section layout="row" layout-align="center center">
+            <md-button class="md-raised" ng-disabled="graph_disable" ng-model="Graph" id="graph" ng-focus="inputValidationOnKeyUp();" ng-click="plotGraph();" >{{plot_graph_txt}}</md-button>
+        </section>
+
+        <!-- Reset button -->
+        <section layout="row" layout-align="center center">
+            <md-button class="md-raised" ng-disabled="reset_disable" ng-model="Reset" id="reset" ng-click="reset();" >{{reset_txt}}</md-button>
+        </section>
+        </div>
+
+        <!-- ////////////   -->      
+        <md-button id="result" class="md-raised md-primary toolbarbutton subTitle" ng-click="toggle()">{{result}} 
+        <span aria-hidden="true">
+        <md-icon md-svg-src="md-toggle-arrow"   aria-hidden="true" ng-animate="{enter: 'rotate', leave: 'rotateCounterwise'}" ng-class="{true: 'rotate', false: 'rotateCounterwise'}[isActive]" ></md-icon>
+        </span> 
+        </md-button>
+        <div ng-hide="showValue" class="div">
+            <!-- Insert Drop Time and Scan Rate -->
+            <table id="resultTable">
+                <tr>
+                    <td id="tablerow"><md-content class="md-title selectable" layout-padding>{{drop_time_txt}}</md-content></td>
+                    <td><md-content class="md-title selectable" layout-padding>: 1</md-content></td>
+                </tr>
+                <tr>
+                    <td id="tablerow"><md-content class="md-title selectable" layout-padding>{{scan_rate_txt}}</md-content></td>
+                    <td><md-content class="md-title selectable" layout-padding>: 5</md-content></td>
+                </tr>
+                <tr ng-hide="hide_show_result">
+                    <td id="tablerow"><md-content class="md-title selectable" layout-padding>{{average_diffusion}} (µA)</md-content></td>
+                    <td><md-content class="md-title selectable" layout-padding>: {{result_value}}</md-content></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </div>
+    </md-sidenav>
+</md-content>
+</body>
+<script src="../template/js/loading.js"></script>
+</html>

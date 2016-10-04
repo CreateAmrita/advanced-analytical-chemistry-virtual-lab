@@ -1,0 +1,50 @@
+<xml>
+<DATA>
+  <ANALYTE>
+    <NAME>CuSO4</NAME>
+    <SET>
+      <CATHODE>Platinum</CATHODE>
+      <ANODE>Platinum</ANODE>
+      <CHMLEQU>63.55</CHMLEQU>
+	  <COLOR>0x3265FF</COLOR>
+    </SET>
+  </ANALYTE>
+  
+  <ANALYTE>
+    <NAME>PbSO4</NAME>
+    <SET>
+      <CATHODE>Platinum</CATHODE>
+      <ANODE>Platinum</ANODE>
+      <CHMLEQU>207.2</CHMLEQU>
+	   <COLOR>0xEFE9EB</COLOR>
+    </SET>
+  </ANALYTE>
+  <ANALYTE>
+    <NAME>MnSO4</NAME>
+    <SET>
+      <CATHODE>Platinum</CATHODE>
+      <ANODE>Platinum dish</ANODE>
+      <CHMLEQU>54.94</CHMLEQU>
+	    <COLOR>0xE0C1BC</COLOR>
+	</SET>
+  </ANALYTE>
+  <ANALYTE>
+    <NAME>NiSO4</NAME>
+    <SET>
+      <CATHODE>Cu on platinum</CATHODE>
+      <ANODE>Platinum</ANODE>
+      <CHMLEQU>58.69</CHMLEQU>
+	   <COLOR>0x00CC66</COLOR>
+    </SET>
+  </ANALYTE>
+  <ANALYTE>
+    <NAME>CdSO4</NAME>
+    <SET>
+      <CATHODE>Cu on platinum</CATHODE>
+      <ANODE>Platinum</ANODE>
+      <CHMLEQU>112.41</CHMLEQU>
+	   <COLOR>0xD1D3E8</COLOR>
+    </SET>
+  </ANALYTE>
+</DATA>
+</xml>
