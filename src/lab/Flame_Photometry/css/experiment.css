@@ -1,0 +1,22 @@
+chart {
+	display: block;
+	width: 400px;
+	height: 200px;
+}
+#graphDiv {
+	position: absolute;
+	left: 10%;
+	top: 9%;
+	opacity: 0.9;
+}
+#conductivityLabel {
+    display:inline;
+}
+#conductivityValue {
+    display:inline;
+    margin-left: -4%;
+}
+#test_1{
+    font-family: Digiface;
+}
+/* Fix for Bootstrap 3 with Angular UI Bootstrap */

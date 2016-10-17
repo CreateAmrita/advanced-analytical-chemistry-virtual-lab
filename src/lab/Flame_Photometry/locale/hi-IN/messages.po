@@ -1,0 +1,548 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: d\n"
+"POT-Creation-Date: 2016-07-27 14:58+0530\n"
+"PO-Revision-Date: 2016-07-27 14:59+0530\n"
+"Last-Translator: \n"
+"Language-Team: d\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;gt.gettext\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: experiment.js:169
+msgid "Distilledwater"
+msgstr "आसुत जल"
+
+#: experiment.js:170
+msgid "Standardsolution15ppm"
+msgstr "स्टैंडर्ड समाधान  के लिए 15 पीपीएम"
+
+#: experiment.js:171
+msgid "Standardsolution10 ppm"
+msgstr "स्टैंडर्ड समाधान  के लिए 10 पीपीएम"
+
+#: experiment.js:172
+msgid "Standardsolution5ppm"
+msgstr "स्टैंडर्ड समाधान  के लिए  5 पीपीएम"
+
+#: experiment.js:173
+msgid "Fruit Juice"
+msgstr "फलों का रस"
+
+#: experiment.js:281
+msgid "help1"
+msgstr "परीक्षण का चयन करें"
+
+#: experiment.js:281
+msgid "help2"
+msgstr "क्लिक करें और केशिका ट्यूब नीचे मानक समाधान के प्रत्येक खींचें।"
+
+#: experiment.js:281
+msgid "help3"
+msgstr "फिर मशीन जांच करने के लिए \" महाप्राण \" बटन पर क्लिक करें।"
+
+#: experiment.js:281
+msgid "help4"
+msgstr "नमूना खींचें मूल स्थिति में यह जगह है।"
+
+#: experiment.js:281
+msgid "help5"
+msgstr "क्लिक करें और केशिका ट्यूब नीचे फलों का रस नमूना खींचें।"
+
+#: experiment.js:281
+msgid "help6"
+msgstr "तब एकाग्रता को मापने के लिए 'आरंभ टेस्ट ' बटन पर क्लिक करें।"
+
+#: experiment.js:281
+msgid "Next"
+msgstr "अगला"
+
+#: experiment.js:281
+msgid "Close"
+msgstr "बंद करे"
+
+#: experiment.js:282
+msgid "Flame Photometry"
+msgstr "ज्वाला भामिति"
+
+#: experiment.js:283
+msgid "Variables"
+msgstr "चर"
+
+#: experiment.js:284
+msgid "Select the Test:"
+msgstr "टेस्ट चयन करें:"
+
+#: experiment.js:285 experiment.js:297
+msgid "K+"
+msgstr "K+"
+
+#: experiment.js:287
+msgid "Select the Sample:"
+msgstr "नमूना चयन करें:"
+
+#: experiment.js:288
+msgid "Thickness of material (cm):"
+msgstr "सामग्री की मोटाई (सेमी):"
+
+#: experiment.js:289
+msgid "Cold water temperature"
+msgstr "ठंडे पानी के तापमान (℃):"
+
+#: experiment.js:290
+msgid "Show cross section"
+msgstr "दिखाएँ क्रॉस सेक्शन"
+
+#: experiment.js:291
+msgid "Show Result"
+msgstr "परिणाम दिखाओ"
+
+#: experiment.js:292
+msgid "Aspirate"
+msgstr "महाप्राण"
+
+#: experiment.js:293
+msgid "Start the test"
+msgstr "परीक्षा शुरू"
+
+#: experiment.js:294
+msgid "Reset"
+msgstr "रीसेट"
+
+#: experiment.js:295
+msgid "copyright"
+msgstr "2015 - 2009 कॉपीराइट © अमृता विश्वविद्यालय"
+
+#: experiment.js:297
+msgid "Na+"
+msgstr "Na+"
+
+#: experiment.js:298
+msgid "Standard solution"
+msgstr "मानक समाधान"
+
+#: experiment.js:298
+msgid "Grapes"
+msgstr "अंगूर"
+
+#: experiment.js:298
+msgid "Guava"
+msgstr "अमरूद"
+
+#: experiment.js:298
+msgid "Lime"
+msgstr "चूना"
+
+#: experiment.js:298
+msgid "Lemon"
+msgstr "निम्बू"
+
+#: experiment.js:298
+msgid "Mango"
+msgstr "आम"
+
+#: experiment.js:298
+msgid "Orange"
+msgstr "नारंगी"
+
+#: experiment.js:298
+msgid "papaya"
+msgstr "पपीता"
+
+#: experiment.js:298
+msgid "Tomato"
+msgstr "टमाटर"
+
+#: experiment.js:298
+msgid "Apple"
+msgstr "सेब"
+
+#~ msgid "Standardsolution15 ppm"
+#~ msgstr ""
+#~ "स्टैंडर्ड  \n"
+#~ "समाधान \n"
+#~ "15 पीपीएम"
+
+#~ msgid "Standardsolution5 ppm"
+#~ msgstr "स्टैंडर्ड समाधान 5 पीपीएम"
+
+#~ msgid ""
+#~ "Distilled \n"
+#~ " water"
+#~ msgstr ""
+#~ "आसुत\n"
+#~ " पानी"
+
+#~ msgid ""
+#~ "Standard \n"
+#~ " solution \n"
+#~ " 15 ppm"
+#~ msgstr ""
+#~ "मानक\n"
+#~ " उपाय\n"
+#~ " 15 पीपीएम"
+
+#~ msgid ""
+#~ "Standard \n"
+#~ " solution \n"
+#~ " 10 ppm"
+#~ msgstr ""
+#~ "मानक\n"
+#~ " उपाय\n"
+#~ " 10 पीपीएम"
+
+#~ msgid ""
+#~ "Standard \n"
+#~ " solution \n"
+#~ " 5 ppm"
+#~ msgstr "मानक  उपाय  5 पीपीएम"
+
+#~ msgid "Distilled water"
+#~ msgstr "आसुत जल"
+
+#~ msgid "Standard solution 15 ppm"
+#~ msgstr "स्टैंडर्ड समाधान 15 पीपीएम"
+
+#~ msgid "Standard solution 10 ppm"
+#~ msgstr "स्टैंडर्ड समाधान के लिए 10 पीपीएम"
+
+#~ msgid "Standard solution 5 ppm"
+#~ msgstr "स्टैंडर्ड समाधान 5 पीपीएम"
+
+#~ msgid "Standard solution15 ppm"
+#~ msgstr "स्टैंडर्ड समाधान 15 पीपीएम"
+
+#~ msgid "help7"
+#~ msgstr "दिखाएँ क्रॉस अनुभागीय सामग्री के पार अनुभागीय दृश्य शामिल हैं।"
+
+#~ msgid "help8"
+#~ msgstr "दिखाएँ परिणाम सामग्री की तापीय चालकता में शामिल है।"
+
+#~ msgid "Heat Transfer by Conduction"
+#~ msgstr "चालन द्वारा ऊष्मा स्थानांतरण"
+
+#~ msgid "Choose Material:"
+#~ msgstr "सामग्री का चयन:"
+
+#~ msgid "Cardboard"
+#~ msgstr "गत्ता"
+
+#~ msgid "Diameter of material (cm):"
+#~ msgstr "सामग्री का व्यास (सेमी):"
+
+#~ msgid "Power On"
+#~ msgstr "पावर ऑन"
+
+#~ msgid "Measurements"
+#~ msgstr "माप"
+
+#~ msgid "Thermal conductivity:"
+#~ msgstr "ऊष्मीय चालकता:"
+
+#~ msgid "Glass"
+#~ msgstr "कांच"
+
+#~ msgid "Mica"
+#~ msgstr "अभ्रक"
+
+#~ msgid "Asbestos-cement board"
+#~ msgstr "अभ्रक सीमेंट बोर्ड"
+
+#~ msgid "Ebonite solid"
+#~ msgstr "ठोस आबनिट"
+
+#~ msgid "START"
+#~ msgstr "स्टार्ट"
+
+#~ msgid "STOP"
+#~ msgstr "रुकें"
+
+#~ msgid "Cold water temperature :"
+#~ msgstr "ठंडे पानी के तापमान (℃)"
+
+#~ msgid "Cold water temperature:"
+#~ msgstr "ठंडे पानी के तापमान:"
+
+#~ msgid "Voltage of both heaters must be same."
+#~ msgstr "Voltage of both heaters must be same."
+
+#~ msgid "Error"
+#~ msgstr "Error"
+
+#~ msgid "Okay"
+#~ msgstr "Okay"
+
+#~ msgid "Heat Transfer by Radiation"
+#~ msgstr "Heat Transfer by Radiation"
+
+#~ msgid "Aluminium"
+#~ msgstr "Aluminium"
+
+#~ msgid "Diameter of the plates (cm):"
+#~ msgstr "Diameter of the plates (cm):"
+
+#~ msgid "Thickness of the plates (cm):"
+#~ msgstr "Thickness of the plates (cm):"
+
+#~ msgid "Chamber temperature (C):"
+#~ msgstr "Chamber temperature (C):"
+
+#~ msgid "Emissivity of the test plate:"
+#~ msgstr "Emissivity of the test plate:"
+
+#~ msgid "Brass"
+#~ msgstr "Brass"
+
+#~ msgid "Iron"
+#~ msgstr "Iron"
+
+#~ msgid "Steel"
+#~ msgstr "Steel"
+
+#~ msgid "Copper"
+#~ msgstr "Copper"
+
+#~ msgid "Temperature (Y axis) Vs Time (X axis)"
+#~ msgstr "Temperature (Y axis) Vs Time (X axis)"
+
+#~ msgid "Time (in minutes)"
+#~ msgstr "Time (in minutes)"
+
+#~ msgid "Temperature"
+#~ msgstr "Temperature"
+
+#~ msgid "Start Experiment"
+#~ msgstr "Start Experiment"
+
+#~ msgid "Thermometer reading:"
+#~ msgstr "Thermometer reading:"
+
+#~ msgid "Show Graph"
+#~ msgstr "Show Graph"
+
+#~ msgid "Water"
+#~ msgstr "Water"
+
+#~ msgid "Plot Graph"
+#~ msgstr "Plot Graph"
+
+#~ msgid "Newton's Law of Cooling"
+#~ msgstr "Newton's Law of Cooling"
+
+#~ msgid "Select material:"
+#~ msgstr "Select material:"
+
+#~ msgid "Select liquid:"
+#~ msgstr "Select liquid:"
+
+#~ msgid "Silver"
+#~ msgstr "Silver"
+
+#~ msgid "Milk"
+#~ msgstr "Milk"
+
+#~ msgid "Vegetable oil"
+#~ msgstr "Vegetable oil"
+
+#~ msgid "Olive oil"
+#~ msgstr "Olive oil"
+
+#~ msgid "Start Heating"
+#~ msgstr "Start Heating"
+
+#~ msgid "Stop Heating"
+#~ msgstr "Stop Heating"
+
+#~ msgid "Stop Plotting"
+#~ msgstr "Stop Plotting"
+
+#~ msgid "Thermometer reading: "
+#~ msgstr "Thermometer reading:"
+
+#~ msgid "Power on"
+#~ msgstr "Power on"
+
+#~ msgid "Choose material:"
+#~ msgstr "Choose material:"
+
+#~ msgid "Chamber temperature :"
+#~ msgstr "Chamber temperature :"
+
+#~ msgid "Show result"
+#~ msgstr "Show result"
+
+#~ msgid "Solution Controls"
+#~ msgstr "Solution Controls"
+
+#~ msgid "Select Environment"
+#~ msgstr "Select Environment"
+
+#~ msgid "Select type of test"
+#~ msgstr "Select type of test"
+
+#~ msgid "Enter the readings:"
+#~ msgstr "Enter the readings:"
+
+#~ msgid "Gravitational Mass (in g):"
+#~ msgstr "Gravitational Mass (in g):"
+
+#~ msgid "Mass of Object, m(g):"
+#~ msgstr "Mass of Object, m(g):"
+
+#~ msgid "Volume (in ml):"
+#~ msgstr "Volume (in ml):"
+
+#~ msgid "Density (g/cc):"
+#~ msgstr "Density (g/cc):"
+
+#~ msgid "1cubic centimetre=1ml"
+#~ msgstr "1cubic centimetre=1ml"
+
+#~ msgid "Check"
+#~ msgstr "Check"
+
+#~ msgid "Earth (9.8m/s&#178;)"
+#~ msgstr "Earth (9.8m/s&#178;)"
+
+#~ msgid "Moon (1.6m/s&#178;)"
+#~ msgstr "Moon (1.6m/s&#178;)"
+
+#~ msgid "Mercury (3.7m/s&#178;)"
+#~ msgstr "Mercury (3.7m/s&#178;)"
+
+#~ msgid "Find Mass"
+#~ msgstr "Find Mass"
+
+#~ msgid "Find Volume"
+#~ msgstr "Find Volume"
+
+#~ msgid "Determination of Density of Solid"
+#~ msgstr "Determination of Density of Solid"
+
+#~ msgid "SAVE"
+#~ msgstr "SAVE"
+
+#~ msgid "FULLSCREEN"
+#~ msgstr "FULLSCREEN"
+
+#~ msgid "EXIT"
+#~ msgstr "EXIT"
+
+#~ msgid "Developed by CDAC Mumbai & Amrita University <br> Under research grant from department of IT"
+#~ msgstr "Developed by CDAC Mumbai & Amrita University <br> Under research grant from department of IT"
+
+#~ msgid "The mass of the object due to gravity that displayed in the spring balance"
+#~ msgstr "The mass of the object due to gravity that displayed in the spring balance"
+
+#~ msgid "The actual mass of the body calculated using the equation, m = gravitational mass(w) x 9.8 / g(environment)"
+#~ msgstr "The actual mass of the body calculated using the equation, m = gravitational mass(w) x 9.8 / g(environment)"
+
+#~ msgid "Final level of water (with block immersed) - Initial level of water (without block immersed)"
+#~ msgstr "Final level of water (with block immersed) - Initial level of water (without block immersed)"
+
+#~ msgid "Density, D(g/cc) = m/v = mass divided by volume"
+#~ msgstr "Density, D(g/cc) = m/v = mass divided by volume"
+
+#~ msgid "Please enter the values"
+#~ msgstr "Please enter the values"
+
+#~ msgid "Good! Answer is correct"
+#~ msgstr "Good! Answer is correct"
+
+#~ msgid "Try Again!"
+#~ msgstr "Try Again!"
+
+#~ msgid "Cylinder"
+#~ msgstr "Cylinder"
+
+#~ msgid "Lock"
+#~ msgstr "Lock"
+
+#~ msgid "Wood"
+#~ msgstr "Wood"
+
+#~ msgid "Stone"
+#~ msgstr "Stone"
+
+#~ msgid "Bob"
+#~ msgstr "Bob"
+
+#, fuzzy
+#~ msgid "Plants"
+#~ msgstr "Plants"
+
+#, fuzzy
+#~ msgid "Animals"
+#~ msgstr "Animals"
+
+#, fuzzy
+#~ msgid "2 hours"
+#~ msgstr "2 hours"
+
+#, fuzzy
+#~ msgid "Role of Carbon Dioxide During Respiration"
+#~ msgstr "Role of Carbon Dioxide During Respiration"
+
+#~ msgid "Start"
+#~ msgstr "Start"
+
+#, fuzzy
+#~ msgid "Number of grasshoppers:"
+#~ msgstr "Number of grasshoppers:"
+
+#, fuzzy
+#~ msgid "Select the animal:"
+#~ msgstr "Select the animal:"
+
+#, fuzzy
+#~ msgid "Select the indicator:"
+#~ msgstr "Select the indicator:"
+
+#, fuzzy
+#~ msgid "Grasshopper"
+#~ msgstr "Grasshopper"
+
+#, fuzzy
+#~ msgid "Human being"
+#~ msgstr "Human being"
+
+#, fuzzy
+#~ msgid "Lime water"
+#~ msgstr "Lime water"
+
+#~ msgid "Click on the information icon to see the inference."
+#~ msgstr "Click on the information icon to see the inference."
+
+#, fuzzy
+#~ msgid "Number of seeds : 10"
+#~ msgstr "Number of seeds : 10"
+
+#, fuzzy
+#~ msgid "Number of seeds : "
+#~ msgstr "Number of seeds : "
+
+#, fuzzy
+#~ msgid "Number of grasshoppers : "
+#~ msgstr "Number of grasshoppers : "
+
+#, fuzzy
+#~ msgid "Presence of CO<sub>2</sub> in the test tube, turns the blue BTB indicator to green."
+#~ msgstr "Presence of CO<sub>2</sub> in the test tube, turns the blue BTB indicator to green."
+
+#, fuzzy
+#~ msgid "Presence of CO<sub>2</sub> in the test tube, turns limewater milky."
+#~ msgstr "Presence of CO<sub>2</sub> in the test tube, turns limewater milky."
+
+#, fuzzy
+#~ msgid "Level of water in the delivery tube rises up due to the release of CO<sub>2</sub> in the conical flask during the respiration of the grasshoppers."
+#~ msgstr "Level of water in the delivery tube rises up due to the release of CO<sub>2</sub> in the conical flask during the respiration of the grasshoppers."
+
+#, fuzzy
+#~ msgid "Level of water in the delivery tube rises up due to the release of CO<sub>2</sub> in the conical flask during the respiration of the seeds."
+#~ msgstr "Level of water in the delivery tube rises up due to the release of CO<sub>2</sub> in the conical flask during the respiration of the seeds."
