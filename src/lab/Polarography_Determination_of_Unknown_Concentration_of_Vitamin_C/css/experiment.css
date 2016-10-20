@@ -1,0 +1,64 @@
+#resultTable {
+	width:100%;
+}
+#tablerow {
+	width:70%;
+}
+chart {
+	display: block;
+	width: 50%;
+	height: 50%;
+	position: absolute;
+}   
+#graphDiv {
+	position: absolute;
+	left: 25%;
+	top: 14%;
+	opacity: 0.9;
+	height: 40%;
+	width: 65%;
+	display: none;
+}
+
+@media only screen and (min-width: 360px) and (max-width: 640px) {
+	#graphDiv {
+		height: 30%;
+    	margin-top: 7%;
+   	 	width: 58%;
+	}
+}
+
+@media only screen and (min-width: 384px) and (max-width: 640px) {
+	#graphDiv {
+		height: 30%;
+    	margin-top: 7%;
+   	 	width: 58%;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 533px) {
+	#graphDiv {
+		height: 30%;
+    	margin-top: 7%;
+    	margin-left: 5%;
+   	 	width: 50%;
+	}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1280px) {
+	#graphDiv {
+		height: 25%;
+    	margin-top: 3%;
+   	 	width: 50%;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	#graphDiv {
+		height: 25%;
+    	margin-top: 7%;
+   	 	width: 58%;
+	}
+}
+
+
