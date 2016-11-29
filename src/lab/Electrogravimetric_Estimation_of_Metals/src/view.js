@@ -4,48 +4,55 @@
 })();
 /** Variables declarations */
 var timer, exp_canvas, start_flag;
+
 var selected_analyte_index;
-var stir_counter;
+
+var stir_counter, timer_interval ,load_flag;
+
 var voltage, resistance, current, time;
-var FARADAY_CONST, NO_OF_ELECTRONS;
-var selectCathodeArray = [];
-var analyteName,cathodeName, anodeName, chemicalEquiavalent;
-var circle_name;
-var sec, count;
-var circle_arr=[];
-var mass_arr=['10.05','10.06','10.09','10.12','10.15','10.18','10.20','10.24','10.30','10.40','10.50','10.60','10.90','11.10','12.20','13.10','15.30'];
-var mass =0;
-var load_flag ;
-var total_weight;
+
+var FARADAY_CONST, NO_OF_ELECTRONS, CATHODE_BOUNADARY_X, CATHODE_BOUNADARY_Y;
+
+var analyteName, cathodeName, anodeName, chemicalEquiavalent;
+
+var total_weight,rheostat_initial_x;
+
+var circle_name, mass;
+
+var circle_arr , mass_arr;
+
+var sec, circle_count;
+
+var platinum_text;
+
 function directiveFunction() {
     return {
         restrict: "A",
         link: function(scope, element, attrs) {
             /** Variable that decides if something should be drawn on mouse move */
             var experiment = true;
-            if (element[0].width > element[0].height) {
+            if ( element[0].width > element[0].height ) {
                 element[0].width = element[0].height;
                 element[0].height = element[0].height;
             } else {
                 element[0].width = element[0].width;
                 element[0].height = element[0].width;
             }
-            if (element[0].offsetWidth > element[0].offsetHeight) {
+            if ( element[0].offsetWidth > element[0].offsetHeight ) {
                 element[0].offsetWidth = element[0].offsetHeight;
             } else {
                 element[0].offsetWidth = element[0].offsetWidth;
                 element[0].offsetHeight = element[0].offsetWidth;
             }
-			exp_canvas = document.getElementById("demoCanvas");
+			exp_canvas = document.getElementById("demoCanvas"); /** Initialization of canvas element */
 			exp_canvas.width = element[0].width;
             exp_canvas.height = element[0].height;
-			/** Creating the stage for the experiment. */
-			electrogravimetric_stage  = new createjs.Stage("demoCanvas")
-            queue = new createjs.LoadQueue(true);
+			electrogravimetric_stage  = new createjs.Stage("demoCanvas") /** Initialization of stage element */
+            queue = new createjs.LoadQueue(true); /** Initialization of queue object */
             queue.installPlugin(createjs.Sound);
-			loadingProgress(queue,electrogravimetric_stage,exp_canvas.width)
+			loadingProgress(queue,electrogravimetric_stage,exp_canvas.width) /** Preloader function */
             queue.on("complete", handleComplete, this);
-            queue.loadManifest([{
+            queue.loadManifest([{ /** Loading all images into queue */
                 id: "background",
                 src: "././images/background.svg",
                 type: createjs.LoadQueue.IMAGE
@@ -124,16 +131,15 @@ function directiveFunction() {
             }
             ]);
             
-			/** Initialisation of stage */
+			/** Activates mouse listeners on the stage */
             electrogravimetric_stage.enableDOMEvents(true);
             electrogravimetric_stage.enableMouseOver();
-			timer =setInterval(function(){updateTimer(scope)},25);/** Stage update function in a timer */          
+			timer = setInterval(function(){updateTimer(scope)},25); /** Stage update function in a timer */          
             function handleComplete() { 
-			 
 				/** loading Background image */
                 loadImages(queue.getResult("background"), "background", 0, 0, "", 0 ); 
                 /** Function for setting stopwatch */
-				createStopwatch (electrogravimetric_stage,-20,250,1);
+				createStopwatch (electrogravimetric_stage,-20,250,.5);
 				/** Loading all images in the queue to the stage */				
 				loadImages(queue.getResult("rheostat"), "rheostat",465, 510, "", 0);
 				loadImages(queue.getResult("cuso4_solution"), "cuso4_solution",295, 235, "", 0);
@@ -154,27 +160,28 @@ function directiveFunction() {
                 translationLabels(); /** Translation of strings using gettext */
 				/** Initializing the variables */
                 initialisationOfVariables(scope); 
+				/** Initializing image visibility status*/
 				initialisationOfImages();
+				/** Function call for changing cathode, anode based on the solution selected */
 				setAnalyteFn(scope);
+				/** loading stirrer images */
 				for ( var i=1; i<=6; i++ ) {
                     loadImages(queue.getResult("stirrer"+i), "stirrer"+i, 345, 340, "", 0, electrogravimetric_stage, 1);
                 }
-				/** Adding playFn() function to click event of play button in clock */
+				/** Adding playFn function to click event of play button in clock */
 				clockContainer.getChildByName("play").on("click",function(){
-				/** enabling the pause button after a play click in the stop watch */
-				if(start_flag)
-				{
-					scope.pause_btn_label = pause_btn_var;
-				}
+					/** enabling the pause button after a play click in the stop watch */
+					if ( start_flag ) {
+						scope.pause_btn_label = pause_btn_var;
+					}
                 });
-				/** Adding pauseFn() function to click event of pause button in clock */
+				/** Adding pauseFn function to click event of pause button in clock */
 				clockContainer.getChildByName("pause").on("click",function(){
-				/**enabling the play button after a pause click in the stop watch */
-				if(start_flag)
-				{
-					scope.pause_btn_label = play_btn_var;
+					/**enabling the play button after a pause click in the stop watch */
+					if ( start_flag ) {
+						scope.pause_btn_label = play_btn_var;
+					}
 					scope.$apply();
-				}
 				});
             }
 			
@@ -202,6 +209,7 @@ function directiveFunction() {
 				stop_btn_var =_("stop");
 				pause_btn_var =_("pause");
 				play_btn_var =_("play");
+				platinum_text = _('Platinum');
 				scope.reset = _("Reset");
 				scope.variables = _("variables");
 				scope.result = _("result");
@@ -218,9 +226,11 @@ function directiveFunction() {
 				scope.total_weight_label = _("Total weight of cathode");
 				/** Unit for total weight */
 				scope.total_weight_unit = _("g");
+				/** Initializing solution array*/
 				scope.selectSolutionArray = [{optionsSolution: _('CuSO₄'),type: 0}, {optionsSolution: _('PbSO₄'),type: 1}, {optionsSolution: _('MnSO₄'),type: 2},{optionsSolution: _('NiSO₄'),type: 3}, {optionsSolution: _('CdSO₄'),type: 4}];
-				scope.cathode_value = _('Platinum');
-				scope.anode_value = _('Platinum');
+				/** Setting initial value of cathode and anode*/
+				scope.cathode_value = platinum_text;
+				scope.anode_value = platinum_text;
             }
         }
     }
@@ -228,42 +238,58 @@ function directiveFunction() {
 
 /** All variables initialising in this function */
 function initialisationOfVariables(scope) {
-	/**constant values of Faraday constant and number of electrons*/
+	/** Constant values of Faraday constant and number of electrons */
 	FARADAY_CONST = 96500;
 	NO_OF_ELECTRONS = 2;
-	total_weight = (parseFloat(10).toFixed(2));
-	scope.total_weight_value = total_weight;
+	/** Setting the boundary of circle formation inside the cathode */
+	CATHODE_BOUNADARY_X = 390;
+	CATHODE_BOUNADARY_Y = 330;
+	timer_interval = 0.5; /** Interval of the timer and clock to be execute */
+	rheostat_initial_x = 450; /** Setting the initial x value of rheostat */
+	total_weight = (parseFloat(10).toFixed(2));/** Initialising total value of cathode */
+	scope.total_weight_value = total_weight; /**Setting total value of cathode */
+	/**Setting the flag value as true after all image loading */
 	load_flag = true;
+	/**Initialising the index of analyte */
 	selected_analyte_index = 0;	
+	/** Variable to hide disable property of time, voltage, resistance controls */
 	scope.voltage_ctrls_disable = false;
 	scope.resistance_ctrls_disable = false;
 	scope.time_ctrls_disable = false;
+	/** Variable to show time, voltage, resistance label controls */
 	scope.time_ctrls_show = true;
 	scope.voltage_ctrls_show = true;
 	scope.resistance_ctrls_show = true;
+	/**Setting initial value of voltage,resistance, time controls */
 	scope.voltage_value = 1;
 	scope.resistance_value = 1;
 	scope.time_value = 1;
-	resistance = 1;
-	voltage = 1;
-	time = 1;
-	current = 1;
-	count = 1;
-	stir_counter = 0;
+	resistance = 1; /** Initial value of resistance */
+	voltage = 1; /** Initial value of voltage */
+	time = 1; /** Initial value of time */
+	current = 1; /** Initial value of current */
+	circle_count = 1; /** Variable for counting the circles  */
+	stir_counter = 0; /** Variable for counting the stirrer frames */
+	/** Variable to show cathode controls */
 	scope.cathode_ctrls_show = true;
+	/** Variable to hide disable property of cathode controls */
 	scope.cathode_ctrls_disable = false;
+	/** Variable to hide disable property of analyte controls */
 	scope.analyte_ctrls_disable = false;
-	scope.analyte_Mdl = 0;
-	scope.cathode_Mdl = 0;
-	scope.anode_Mdl = 0; 
-	scope.start_btn_label = start_btn_var;
-	scope.pause_btn_label = pause_btn_var;
-	scope.pause_ctrls_disable = true;
-	start_flag = false;
-	getChild("ammeter_txt").text ="1.000";
-	getChild("voltmeter_txt").text = "1.000";
-	getChild("rheostat").x = "465";
-	circle_arr=[];
+	scope.analyte_Mdl = 0; /** Initialising index of analyte */
+	scope.cathode_Mdl = 0; /** Initialising index of cathode */
+	scope.anode_Mdl = 0; /** Initialising index of anode */
+	scope.start_btn_label = start_btn_var; /** Setting start button label  */
+	scope.pause_btn_label = pause_btn_var; /** Setting pause button label  */
+	scope.pause_ctrls_disable = true; /** Variable to disable pause button controls */
+	start_flag = false; /**  Initializing the start_flag as true for checking the experiment started */
+	getChild("ammeter_txt").text ="1.000"; /** Initialising ammeter reading */
+	getChild("voltmeter_txt").text = "1.000"; /** Initialising voltmeter reading */
+	getChild("rheostat").x = "465"; /** Initialising rheostat x position */
+	circle_arr = []; /** Initialising circle array */
+	mass = 0; /** Initialising mass */
+	/** Initialising mass array values*/
+	mass_arr = ['10.05','10.06','10.09','10.12','10.15','10.18','10.20','10.24','10.30','10.40','10.50','10.60','10.90','11.10','12.20','13.10','15.30'];
 }
 
 /** Set the initial status of the bitmap and text depends on its visibility and initial values */
@@ -276,37 +302,34 @@ function initialisationOfImages() {
 }
 
 /** Function for calling xml file for set data to combobox*/
-function loadAnalytes(scope)
-{
+function loadAnalytes(scope) {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function() {
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
-	{
-		retrieveData(xmlhttp,scope)
-	}
+		if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+			retrieveData(xmlhttp,scope)
+		}
 	};
 	xmlhttp.open("GET", "./xml/electrogravimetry.xml", true);
 	xmlhttp.send();	
 }
 
-/**function for rotating magnetic stirrer*/
-function magnetMovement(scope)
-{
+/** Function for rotating magnetic stirrer*/
+function magnetMovement(scope) {
 	/** Creating timer for rotating magnetic_stirrer */
 	stir_counter++;
 	stirrerRotate(stir_counter);
-	if (stir_counter >= 6) {
+	if ( stir_counter >= 6 ) {
 		stir_counter = 0;
 	}
-	if(start_flag && pause_flag == false)
-	{
-	scope.start_btn_label = stop_btn_var;
-	startExperiment(scope);
+	/** Function call to start the experiment only when the start button is clicked */
+	if ( start_flag && pause_flag == false ) { /** pause flag is used to check whether the pause button click */
+		scope.start_btn_label = stop_btn_var; /** change the start button label to stop while starting the experiment */
+		startExperiment(scope);
 	}	
 }
-/**function for enabling one stirrer at a time*/
+/** Function for enabling one stirrer at a time*/
 function stirrerRotate(count) {
-	for (var i = 1; i <=6; i++) {
+	for ( var i = 1; i <=6; i++ ) {
 		getChild("stirrer"+i).alpha = 0;
 	}
 	getChild("stirrer" +count).alpha = 1;
@@ -320,7 +343,7 @@ function setText(name, textX, textY, value, color, fontSize) {
     _text.name = name;
     _text.text = value;
     _text.color = color;
-	if(name=="voltmeter_txt" || name=="ammeter_txt"){
+	if ( name=="voltmeter_txt" || name=="ammeter_txt" ) {
 		_text.font = "2em digiface";
 	}
     electrogravimetric_stage.addChild(_text); /** Adding text to the stage */
@@ -328,18 +351,17 @@ function setText(name, textX, textY, value, color, fontSize) {
 
 /** All the images loading and added to the stage */
 function loadImages(image, name, xPos, yPos, cursor, rot) {
-    var _bitmap = new createjs.Bitmap(image).set({});
+	var _bitmap = new createjs.Bitmap(image).set({});
     _bitmap.x = xPos;
     _bitmap.y = yPos;
     _bitmap.scaleX = _bitmap.scaleY = 1;
     _bitmap.name = name;
-	if (name == "switch") {
+	/** Setting registration point for switch */
+	if ( name == "switch" ) {
         _bitmap.regX = image.width/4.5;
         _bitmap.regY = image.height;
     }
     _bitmap.rotation = rot;
     _bitmap.cursor = cursor;
-    electrogravimetric_stage.addChild(_bitmap); /** Adding bitmap to the container */
-    blur_image_width = _bitmap.image.width; /**Passing the width of the cell for blur function */
-    blur_image_height = _bitmap.image.height; /**Passing the height of the cell for blur function */
+    electrogravimetric_stage.addChild(_bitmap); /** Adding bitmap to the stage */
 }
